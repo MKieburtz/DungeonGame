@@ -91,9 +91,10 @@ Returns: nothing
 This method calls: defend() or base version of method
 This method is called by: attack() from base class
 ---------------------------------------------------------*/
-public void loseHealth(int hitPoints)
+public void loseHealth(int hitPoints, boolean defendable)
 	{
-		if (defend())
+		// if defendable is false then this short-circuitss
+		if (defendable && defend())
 		{
 			System.out.println(stats.name + " BLOCKED the attack!");
 		}
@@ -101,7 +102,6 @@ public void loseHealth(int hitPoints)
 		{
 			super.loseHealth(hitPoints);
 		}
-
 
 	}//end method
 

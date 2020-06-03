@@ -105,25 +105,30 @@ This method is called by: overridden versions in dungeon.Hero and dungeon.Monste
 ---------------------------------------------------------*/
 	public void loseHealth(int hitPoints)
 	{
-		if (hitPoints <0)
+		if (hitPoints <= 0)
 			System.out.println("Hitpoint amount must be positive.");
-		else if (hitPoints >0)
-		{
+		else {
 			stats.hitPoints -= hitPoints;
 			if (stats.hitPoints < 0)
 				stats.hitPoints = 0;
-			System.out.println(getName() + " hit " +
-								" for <" + hitPoints + "> points damage.");
-			System.out.println(getName() + " now has " +
-								getHitPoints() + " hit points remaining.");
+			reportHealthLoss(hitPoints);
 			System.out.println();
-		}//end else if
+		} //end else if
 
 		if (stats.hitPoints == 0)
 			System.out.println(stats.name + " has been killed :-(");
 
 
 	}//end method
+
+	private void reportHealthLoss(int damage) {
+		System.out.println(getName() + " hit " +
+				" for <" + damage + "> points damage.");
+		System.out.println(getName() + " now has " +
+				getHitPoints() + " hit points remaining.");
+	}
+
+
 
 /*-------------------------------------------------------
 isAlive is used to see if a character is still alive by checking hit points
