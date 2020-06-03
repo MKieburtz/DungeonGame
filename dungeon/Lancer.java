@@ -3,7 +3,7 @@ package dungeon;
 public class Lancer extends Hero {
 
     public Lancer() {
-        super("dungeon.Lancer", 95, 4, .7, 18, 30, .5);
+        super("Lancer", 95, 4, .7, 18, 30, .5);
         specialMove = new Jump(.4);
 
     }//end constructor

@@ -15,9 +15,9 @@ public class HeroFactory extends Hero{
         int choice;
 
         System.out.println("Choose a hero:\n" +
-                "1. dungeon.Warrior\n" +
-                "2. dungeon.Sorceress\n" +
-                "3. dungeon.Thief");
+                "1. Warrior\n" +
+                "2. Sorceress\n" +
+                "3. Thief");
         choice = Integer.parseInt(Keyboard.kb.nextLine()); // this is Erics
 
         switch(choice)
@@ -28,7 +28,7 @@ public class HeroFactory extends Hero{
 
             case 3: return new Thief();
 
-            default: System.out.println("invalid choice, returning dungeon.dungeon.Thief");
+            default: System.out.println("invalid choice, returning Thief");
                 return new Thief();
         }//end switch
     }//end chooseHero method

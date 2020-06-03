@@ -5,7 +5,7 @@ public class Siren extends Monster
 
     public Siren()
     {
-        super("Silva the dungeon.Siren", 80, 5, .8, .4, 20, 30, 20, 40);
+        super("Silva the Siren", 80, 5, .8, .4, 20, 30, 20, 40);
 
     }//end constructor
 

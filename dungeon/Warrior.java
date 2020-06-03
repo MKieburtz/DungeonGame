@@ -18,7 +18,7 @@ public class Warrior extends Hero
     public Warrior()
 	{
 
-		super("dungeon.Warrior", 125, 4, .8, 35, 60, .2);
+		super("Warrior", 125, 4, .8, 35, 60, .2);
 		specialMove = new CrushingBlow(.4);
 
     }//end constructor

@@ -27,7 +27,7 @@ public class MonsterFactory extends Monster {
 
             case 3: return new Skeleton();
 
-            default: System.out.println("invalid choice, returning dungeon.dungeon.Skeleton");
+            default: System.out.println("invalid choice, returning Skeleton");
                 return new Skeleton();
 
         }//end switch

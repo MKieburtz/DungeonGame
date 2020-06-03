@@ -5,7 +5,7 @@ public class Warlock extends Hero
 
     public Warlock()
     {
-        super("dungeon.Warlock", 75, 8, .8, 25, 42, .5);
+        super("Warlock", 75, 8, .8, 25, 42, .5);
         specialMove = new SummonVoidDemon(.4);
 
 

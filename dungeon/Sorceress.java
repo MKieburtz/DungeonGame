@@ -19,7 +19,7 @@ public class Sorceress extends Hero
 //-----------------------------------------------------------------
     public Sorceress()
 	{
-		super("dungeon.Sorceress", 75, 5, .7, 25, 50, .3);
+		super("Sorceress", 75, 5, .7, 25, 50, .3);
 
 		specialMove = new IncreaseHitPoints(MIN_ADD, MAX_ADD);
     }//end constructor

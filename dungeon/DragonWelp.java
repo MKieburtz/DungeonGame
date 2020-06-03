@@ -5,7 +5,7 @@ public class DragonWelp extends Monster
 
     public DragonWelp()
     {
-        super("Nexxis the dungeon.DragonWelp", 100, 5, .8, .1, 15, 30, 20, 40);
+        super("Nexxis the DragonWelp", 100, 5, .8, .1, 15, 30, 20, 40);
 
     }//end constructor
 
