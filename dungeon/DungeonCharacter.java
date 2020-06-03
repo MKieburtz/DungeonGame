@@ -1,7 +1,7 @@
-
+package dungeon;
 
 /**
- * Title: DungeonCharacter.java
+ * Title: dungeon.DungeonCharacter.java
  *
  * Description: Abstract Base class for inheritance hierarchy for a
  *              role playing game
@@ -15,7 +15,7 @@
  *     opponent)
  *
  *  class methods (all are directly accessible by derived classes):
- *    DungeonCharacter(String name, int hitPoints, int attackSpeed,
+ *    dungeon.DungeonCharacter(String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax)
 	  public String getName()
 	  public int getHitPoints()
@@ -24,7 +24,7 @@
 	  public void subtractHitPoints(int hitPoints) -- this method will be
 	    overridden
 	  public boolean isAlive()
-	  public void attack(DungeonCharacter opponent) -- this method will be
+	  public void attack(dungeon.DungeonCharacter opponent) -- this method will be
 	    overridden
  *
  * Copyright:    Copyright (c) 2001
@@ -78,7 +78,7 @@ Receives: number of hit points to add
 Returns: nothing
 
 This method calls: nothing
-This method is called by: heal method of monsters and Sorceress
+This method is called by: heal method of monsters and dungeon.Sorceress
 ---------------------------------------------------------*/
 	public void addHitPoints(int hitPoints)
 	{
@@ -101,7 +101,7 @@ Receives: number of hit points to subtract
 Returns: nothing
 
 This method calls: nothing
-This method is called by: overridden versions in Hero and Monster
+This method is called by: overridden versions in dungeon.Hero and dungeon.Monster
 ---------------------------------------------------------*/
 	public void loseHealth(int hitPoints)
 	{

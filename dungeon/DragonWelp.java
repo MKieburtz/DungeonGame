@@ -1,9 +1,11 @@
+package dungeon;
+
 public class DragonWelp extends Monster
 {
 
     public DragonWelp()
     {
-        super("Nexxis the DragonWelp", 100, 5, .8, .1, 15, 30, 20, 40);
+        super("Nexxis the dungeon.DragonWelp", 100, 5, .8, .1, 15, 30, 20, 40);
 
     }//end constructor
 
@@ -16,4 +18,4 @@ public class DragonWelp extends Monster
     }//end override of attack
 
 
-}//end class Gremlin
+}//end class dungeon.Gremlin

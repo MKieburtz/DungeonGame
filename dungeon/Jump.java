@@ -1,3 +1,5 @@
+package dungeon;
+
 public class Jump implements SpecialMove {
 
     private double jump;

@@ -1,3 +1,5 @@
+package dungeon;
+
 /**
  * Title:
  * Description:
@@ -54,4 +56,4 @@ public abstract class Monster extends DungeonCharacter
 
  }//end method
 
-}//end Monster class
+}//end dungeon.Monster class

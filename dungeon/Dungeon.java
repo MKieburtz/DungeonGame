@@ -1,5 +1,7 @@
+package dungeon;
+
 /**
- * Title: Dungeon.java
+ * Title: dungeon.Dungeon.java
  *
  * Description: Driver file for Heroes and Monsters project
  *
@@ -9,23 +11,23 @@
  *
  * History:
  *  11/4/2001: Wrote program
- *    --created DungeonCharacter class
- *    --created Hero class
- *    --created Monster class
- *    --had Hero battle Monster
+ *    --created dungeon.DungeonCharacter class
+ *    --created dungeon.Hero class
+ *    --created dungeon.Monster class
+ *    --had dungeon.Hero battle dungeon.Monster
  *    --fixed attack quirks (dead monster can no longer attack)
- *    --made Hero and Monster abstract
- *    --created Warrior
- *    --created Ogre
- *    --made Warrior and Ogre battle
- *    --added battleChoices to Hero
- *    --added special skill to Warrior
- *    --made Warrior and Ogre battle
- *    --created Sorceress
- *    --created Thief
- *    --created Skeleton
- *    --created Gremlin
- *    --added game play features to Dungeon.java (this file)
+ *    --made dungeon.Hero and dungeon.Monster abstract
+ *    --created dungeon.Warrior
+ *    --created dungeon.Ogre
+ *    --made dungeon.Warrior and dungeon.Ogre battle
+ *    --added battleChoices to dungeon.Hero
+ *    --added special skill to dungeon.Warrior
+ *    --made dungeon.Warrior and dungeon.Ogre battle
+ *    --created dungeon.Sorceress
+ *    --created dungeon.Thief
+ *    --created dungeon.Skeleton
+ *    --created dungeon.Gremlin
+ *    --added game play features to dungeon.Dungeon.java (this file)
  *  11/27/2001: Finished documenting program
  * version 1.0
  */
@@ -59,4 +61,4 @@ public class Dungeon
 
     }//end main method
 
-}//end Dungeon class
+}//end dungeon.Dungeon class

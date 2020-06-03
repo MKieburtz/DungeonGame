@@ -1,3 +1,5 @@
+package dungeon;
+
 public class DungeonGame {
 
     /*-------------------------------------------------------------------
@@ -16,9 +18,9 @@ public class DungeonGame {
 
 
     /*-------------------------------------------------------------------
-    battle is the actual combat portion of the game.  It requires a Hero
-    and a Monster to be passed in.  Battle occurs in rounds.  The Hero
-    goes first, then the Monster.  At the conclusion of each round, the
+    battle is the actual combat portion of the game.  It requires a dungeon.Hero
+    and a dungeon.Monster to be passed in.  Battle occurs in rounds.  The dungeon.Hero
+    goes first, then the dungeon.Monster.  At the conclusion of each round, the
     user has the option of quitting.
     ---------------------------------------------------------------------*/
     public static void battle(Hero theHero, Monster theMonster)

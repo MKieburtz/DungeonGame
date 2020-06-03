@@ -1,9 +1,11 @@
+package dungeon;
+
 public class Siren extends Monster
 {
 
     public Siren()
     {
-        super("Silva the Siren", 80, 5, .8, .4, 20, 30, 20, 40);
+        super("Silva the dungeon.Siren", 80, 5, .8, .4, 20, 30, 20, 40);
 
     }//end constructor
 
@@ -16,4 +18,4 @@ public class Siren extends Monster
     }//end override of attack
 
 
-}//end class Gremlin
+}//end class dungeon.Gremlin

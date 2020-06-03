@@ -1,3 +1,5 @@
+package dungeon;
+
 public class DungeonCharacterStats {
     protected String name;
     protected int hitPoints;

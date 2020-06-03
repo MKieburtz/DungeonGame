@@ -1,3 +1,5 @@
+package dungeon;
+
 public class SupriseAttack implements SpecialMove {
 
     private double supriseThreshold, blockThreshold;

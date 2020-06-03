@@ -1,6 +1,6 @@
-
+package dungeon;
 //********************************************************************
-//  Keyboard.java       Author: Lewis and Loftus
+//  dungeon.Keyboard.java       Author: Lewis and Loftus
 //
 //  Facilitates keyboard input by abstracting details about input
 //  parsing, conversions, and exception handling.

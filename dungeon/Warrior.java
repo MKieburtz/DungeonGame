@@ -1,4 +1,4 @@
-
+package dungeon;
 
 /**
  * Title:
@@ -18,7 +18,7 @@ public class Warrior extends Hero
     public Warrior()
 	{
 
-		super("Warrior", 125, 4, .8, 35, 60, .2);
+		super("dungeon.Warrior", 125, 4, .8, 35, 60, .2);
 		specialMove = new CrushingBlow(.4);
 
     }//end constructor
@@ -31,4 +31,4 @@ public class Warrior extends Hero
 		super.normalAttack(opponent);
 	}//end override of attack method
 
-}//end Hero class
+}//end dungeon.Hero class
