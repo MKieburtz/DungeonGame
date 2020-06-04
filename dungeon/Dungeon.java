@@ -1,64 +1,31 @@
 package dungeon;
 
-/**
- * Title: dungeon.Dungeon.java
- *
- * Description: Driver file for Heroes and Monsters project
- *
- * Copyright:    Copyright (c) 2001
- * Company: Code Dogs Inc.
- * I.M. Knurdy
- *
- * History:
- *  11/4/2001: Wrote program
- *    --created dungeon.DungeonCharacter class
- *    --created dungeon.Hero class
- *    --created dungeon.Monster class
- *    --had dungeon.Hero battle dungeon.Monster
- *    --fixed attack quirks (dead monster can no longer attack)
- *    --made dungeon.Hero and dungeon.Monster abstract
- *    --created dungeon.Warrior
- *    --created dungeon.Ogre
- *    --made dungeon.Warrior and dungeon.Ogre battle
- *    --added battleChoices to dungeon.Hero
- *    --added special skill to dungeon.Warrior
- *    --made dungeon.Warrior and dungeon.Ogre battle
- *    --created dungeon.Sorceress
- *    --created dungeon.Thief
- *    --created dungeon.Skeleton
- *    --created dungeon.Gremlin
- *    --added game play features to dungeon.Dungeon.java (this file)
- *  11/27/2001: Finished documenting program
- * version 1.0
- */
+public class Dungeon {
+    private static boolean goNorth = false;
+    private static boolean goSouth = false;
+    private static boolean goEast = false;
+    private static boolean goWest = false;
 
-/*
-  This class is the driver file for the Heroes and Monsters project.  It will
-  do the following:
+    public static Room[][] newDungeon() {
+        Room[][] dungeon = new Room[5][5];
+        for (int i = 0; i < dungeon.length; i++) {
+            for(int k = 0; k < dungeon.length; k++) {
+                //dungeon[i][k] =
+            }
+        }
+        Hero.setCurrRoom(dungeon[1][1]);  //This is where the hero will start
+        return dungeon;
+    }
 
-  1.  Allow the user to choose a hero
-  2.  Randomly select a monster
-  3.  Allow the hero to battle the monster
+    public boolean roomExists(int x, int y) {
+        return (rowExists(x)) && (colExists(y));
+    }
 
-  Once a battle concludes, the user has the option of repeating the above
+    public boolean rowExists(int x) {
+        return (x >= 0) && (x <= 4);
+    }
 
-*/
-public class Dungeon
-{
-    public static void main(String[] args)
-	{
-
-		Hero theHero;
-		Monster theMonster;
-
-		do
-		{
-		    theHero = HeroFactory.chooseHero();
-		    theMonster = MonsterFactory.generateMonster();
-			DungeonGame.battle(theHero, theMonster);
-
-		} while (DungeonGame.playAgain());
-
-    }//end main method
-
-}//end dungeon.Dungeon class
+    public boolean colExists(int y) {
+        return (y >= 0) && (y <= 4);
+    }
+}
