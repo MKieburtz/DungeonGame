@@ -1,3 +1,5 @@
+package dungeon;
+
 public class DragonWelp extends Monster
 {
 
@@ -16,4 +18,4 @@ public class DragonWelp extends Monster
     }//end override of attack
 
 
-}//end class Gremlin
+}//end class dungeon.Gremlin

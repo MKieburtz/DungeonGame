@@ -1,3 +1,5 @@
+package dungeon;
+
 public class SummonVoidDemon implements SpecialMove {
 
     private double summonVoidDemon;

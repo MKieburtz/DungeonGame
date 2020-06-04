@@ -1,4 +1,4 @@
-
+package dungeon;
 
 /**
  * Title:
@@ -27,4 +27,4 @@ public class Gremlin extends Monster
 	}//end override of attack
 
 
-}//end class Gremlin
+}//end class dungeon.Gremlin

@@ -1,3 +1,5 @@
+package dungeon;
+
 public class Siren extends Monster
 {
 
@@ -16,4 +18,4 @@ public class Siren extends Monster
     }//end override of attack
 
 
-}//end class Gremlin
+}//end class dungeon.Gremlin

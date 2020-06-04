@@ -1,4 +1,4 @@
-
+package dungeon;
 
 /**
  * Title:
@@ -9,22 +9,23 @@
  * @version 1.0
  */
 
-public class Skeleton extends Monster
+public class Ogre extends Monster
 {
 
-    public Skeleton()
+    public Ogre()
 	{
-		super("Sargath the Skeleton", 100, 3, .8, .3, 30, 50, 30, 50);
+		super("Oscar the Ogre", 200, 2, .6, .1, 30, 50, 30, 50);
+
 
     }//end constructor
 
 	public void normalAttack(DungeonCharacter opponent)
 	{
-		System.out.println(stats.name + " slices his rusty blade at " +
+		System.out.println(stats.name + " slowly swings a club toward's " +
 							opponent.getName() + ":");
 		super.normalAttack(opponent);
 
 	}//end override of attack
 
 
-}//end class Skeleton
+}//end dungeon.Monster class

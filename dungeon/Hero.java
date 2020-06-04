@@ -1,9 +1,11 @@
+package dungeon;
+
 /**
- * Title: Hero.java
+ * Title: dungeon.Hero.java
  *
  * Description: Abstract base class for a hierarchy of heroes.  It is derived
- *  from DungeonCharacter.  A Hero has battle choices: regular attack and a
- *  special skill which is defined by the classes derived from Hero.
+ *  from dungeon.DungeonCharacter.  A dungeon.Hero has battle choices: regular attack and a
+ *  special skill which is defined by the classes derived from dungeon.Hero.
  *
  *  class variables (all are directly accessible from derived classes):
  *    chanceToBlock -- a hero has a chance to block an opponents attack
@@ -11,13 +13,13 @@
  *                for more than one attack per round of battle
  *
  *  class methods (all are public):
- *    public Hero(String name, int hitPoints, int attackSpeed,
+ *    public dungeon.Hero(String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax,
 					 double chanceToBlock)
 	  public void readName()
 	  public boolean defend()
 	  public void subtractHitPoints(int hitPoints)
-	  public void battleChoices(DungeonCharacter opponent)
+	  public void battleChoices(dungeon.DungeonCharacter opponent)
 
  * Copyright:    Copyright (c) 2001
  * Company:
@@ -81,7 +83,7 @@ This method is called by: subtractHitPoints()
 subtractHitPoints checks to see if hero blocked attack, if so a message
 is displayed, otherwise base version of this method is invoked to
 perform the subtraction operation.  This method overrides the method
-inherited from DungeonCharacter promoting polymorphic behavior
+inherited from dungeon.DungeonCharacter promoting polymorphic behavior
 
 Receives: hit points to subtract
 Returns: nothing
@@ -89,9 +91,10 @@ Returns: nothing
 This method calls: defend() or base version of method
 This method is called by: attack() from base class
 ---------------------------------------------------------*/
-public void loseHealth(int hitPoints)
+public void loseHealth(int hitPoints, boolean defendable)
 	{
-		if (defend())
+		// if defendable is false then this short-circuitss
+		if (defendable && defend())
 		{
 			System.out.println(stats.name + " BLOCKED the attack!");
 		}
@@ -99,7 +102,6 @@ public void loseHealth(int hitPoints)
 		{
 			super.loseHealth(hitPoints);
 		}
-
 
 	}//end method
 
@@ -154,4 +156,4 @@ This method is called by: external sources
 		System.out.println("Vision Potions:");
 		System.out.println("Total pillars found:");
 	}
-}//end Hero class
+}//end dungeon.Hero class

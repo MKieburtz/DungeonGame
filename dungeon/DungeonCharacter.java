@@ -1,7 +1,7 @@
-
+package dungeon;
 
 /**
- * Title: DungeonCharacter.java
+ * Title: dungeon.DungeonCharacter.java
  *
  * Description: Abstract Base class for inheritance hierarchy for a
  *              role playing game
@@ -15,7 +15,7 @@
  *     opponent)
  *
  *  class methods (all are directly accessible by derived classes):
- *    DungeonCharacter(String name, int hitPoints, int attackSpeed,
+ *    dungeon.DungeonCharacter(String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax)
 	  public String getName()
 	  public int getHitPoints()
@@ -24,7 +24,7 @@
 	  public void subtractHitPoints(int hitPoints) -- this method will be
 	    overridden
 	  public boolean isAlive()
-	  public void attack(DungeonCharacter opponent) -- this method will be
+	  public void attack(dungeon.DungeonCharacter opponent) -- this method will be
 	    overridden
  *
  * Copyright:    Copyright (c) 2001
@@ -78,7 +78,7 @@ Receives: number of hit points to add
 Returns: nothing
 
 This method calls: nothing
-This method is called by: heal method of monsters and Sorceress
+This method is called by: heal method of monsters and dungeon.Sorceress
 ---------------------------------------------------------*/
 	public void addHitPoints(int hitPoints)
 	{
@@ -101,29 +101,34 @@ Receives: number of hit points to subtract
 Returns: nothing
 
 This method calls: nothing
-This method is called by: overridden versions in Hero and Monster
+This method is called by: overridden versions in dungeon.Hero and dungeon.Monster
 ---------------------------------------------------------*/
 	public void loseHealth(int hitPoints)
 	{
-		if (hitPoints <0)
+		if (hitPoints <= 0)
 			System.out.println("Hitpoint amount must be positive.");
-		else if (hitPoints >0)
-		{
+		else {
 			stats.hitPoints -= hitPoints;
 			if (stats.hitPoints < 0)
 				stats.hitPoints = 0;
-			System.out.println(getName() + " hit " +
-								" for <" + hitPoints + "> points damage.");
-			System.out.println(getName() + " now has " +
-								getHitPoints() + " hit points remaining.");
+			reportHealthLoss(hitPoints);
 			System.out.println();
-		}//end else if
+		} //end else if
 
 		if (stats.hitPoints == 0)
 			System.out.println(stats.name + " has been killed :-(");
 
 
 	}//end method
+
+	private void reportHealthLoss(int damage) {
+		System.out.println(getName() + " hit " +
+				" for <" + damage + "> points damage.");
+		System.out.println(getName() + " now has " +
+				getHitPoints() + " hit points remaining.");
+	}
+
+
 
 /*-------------------------------------------------------
 isAlive is used to see if a character is still alive by checking hit points

@@ -1,3 +1,5 @@
+package dungeon;
+
 public class CrushingBlow implements SpecialMove {
     private double crushingBlowChance;
 

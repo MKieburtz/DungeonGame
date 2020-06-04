@@ -1,4 +1,4 @@
-
+package dungeon;
 
 /**
  * Title:
@@ -31,4 +31,4 @@ public class Warrior extends Hero
 		super.normalAttack(opponent);
 	}//end override of attack method
 
-}//end Hero class
+}//end dungeon.Hero class

@@ -1,3 +1,5 @@
+package dungeon;
+
 /**
  * Title:
  * Description:
@@ -8,7 +10,7 @@
  */
 
 
-public abstract class Monster extends DungeonCharacter
+public abstract class Monster extends DungeonCharacter implements RoomContent
 {
 	protected double chanceToHeal;
 	protected int minHeal, maxHeal;
@@ -53,5 +55,14 @@ public abstract class Monster extends DungeonCharacter
 		heal();
 
  }//end method
+	@Override
+	public boolean isUnique() {
+  		return false;
+	}
 
-}//end Monster class
+	@Override
+	public void onHeroEnter(Hero hero) {
+  		DungeonGame.battle(hero, this);
+	}
+
+}//end dungeon.Monster class

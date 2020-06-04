@@ -1,3 +1,5 @@
+package dungeon;
+
 public class IncreaseHitPoints implements SpecialMove {
     private final int MIN_ADD, MAX_ADD;
 

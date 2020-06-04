@@ -1,3 +1,5 @@
+package dungeon;
+
 public class Lancer extends Hero {
 
     public Lancer() {
