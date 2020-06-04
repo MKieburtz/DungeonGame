@@ -1,9 +1,8 @@
 public class DungeonGame {
-
     /*-------------------------------------------------------------------
-    playAgain allows gets choice from user to play another game.  It returns
-    true if the user chooses to continue, false otherwise.
-    ---------------------------------------------------------------------*/
+playAgain allows gets choice from user to play another game.  It returns
+true if the user chooses to continue, false otherwise.
+---------------------------------------------------------------------*/
     public static boolean playAgain()
     {
         char again;
