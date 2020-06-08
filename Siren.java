@@ -7,7 +7,7 @@ public class Siren extends Monster
 
     }//end constructor
 
-    public void attack(DungeonCharacter opponent)
+    public void normalAttack(DungeonCharacter opponent)
     {
         System.out.println(stats.name + "  screams at " +
                 opponent.getName() + ":");

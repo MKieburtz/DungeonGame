@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Title: Hero.java
  *
@@ -33,7 +35,10 @@ public abstract class Hero extends DungeonCharacter
     protected SpecialMove specialMove;
     private static int currY;
     private static int currX;
-    private Room currRoom;
+    protected int healingPotions;
+    protected int visionPotions;
+    protected int pillarsFound;
+    private Room currentRoom;
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
@@ -43,8 +48,12 @@ public abstract class Hero extends DungeonCharacter
   {
 	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 	this.chanceToBlock = chanceToBlock;
+	healingPotions = 0;
+	visionPotions = 0;
+	pillarsFound = 0;
 	readName();
   }
+
 
 /*-------------------------------------------------------
 readName obtains a name for the hero from the user
@@ -150,13 +159,13 @@ This method is called by: external sources
         } while(numTurns > 0);
     }//end battleChoices
 
-    public  void info() {
-	    System.out.println("Name: " + stats.name );
+    public void info() {
+	    System.out.println("Hero name: " + stats.name );
         System.out.println("In Room ["  + Hero.getCurrX() + "]["+ Hero.getCurrY() + "]");
 	    System.out.println("Health: " + stats.hitPoints );
-	    System.out.println("Healing Potions:" );
-	    System.out.println("Vision Potions:" );
-	    System.out.println("Total pillars found:" );
+	    System.out.println("Healing Potions:" + healingPotions);
+	    System.out.println("Vision Potions:" + visionPotions);
+	    System.out.println("Total pillars found:" + pillarsFound);
     }
 
     public static void setCurrRoom(Room room) {
@@ -172,19 +181,43 @@ This method is called by: external sources
     }
 
 
-    public Room getCurrRoom() {
-        return currRoom;
+    public void getCurrRoom(Room room) {
+        currentRoom = room;
     }
 
 
     public void setCurrX(int currX) {
-        this.currX = currX;
+        Hero.currX = currX;
     }
 
     public void setCurrY(int currY) {
-        this.currY = currY;
+        Hero.currY = currY;
     }
 
+
+    public void aquireHealingPotion() {
+        healingPotions++;
+    }
+
+    public void consumeHealingPotion() {
+        // we can modify these numbers if we want
+        Random rand = new Random();
+        int minheal = 5;
+        int maxheal = 15;
+        stats.heal(minheal + rand.nextInt(maxheal));
+    }
+
+    public void aquireVisionPotion() {
+        visionPotions++;
+    }
+
+    public void consumeVisionPotion() {
+        currentRoom.revealSurroundingRooms();
+    }
+
+    public void aquirePillar() {
+        pillarsFound++;
+    }
 
     /*******************************************
      *  Moving the Hero
@@ -192,9 +225,8 @@ This method is called by: external sources
      * should move.
      */
 
-    public void movingChoice(Hero hero) {
+    public static void movingChoice(Hero hero) {
 
-        info();
         if (Dungeon.isgoNorth()) {
             System.out.println("Go North (n)\n");
         }
@@ -215,17 +247,17 @@ This method is called by: external sources
                 "* s * \n");
 
         String choice = Keyboard.kb.nextLine();
-        if (choice.equals("n") && Dungeon.isgoNorth()) {
-            hero.setCurrY(getCurrY() + 1);
+        if (choice.equals("n") && Dungeon.isgoNorth()) {   //move up one room
+            hero.setCurrY(Hero.getCurrY() + 1);
         }
-        else if (choice.equals("s") && Dungeon.isGoSouth()) {
-            hero.setCurrY(getCurrY() - 1);
+        else if (choice.equals("s") && Dungeon.isGoSouth()) {   //move down one room
+            hero.setCurrY(Hero.getCurrY() - 1);
         }
-        else if (choice.equals("e") && Dungeon.isGoEast()) {
-            hero.setCurrX(getCurrX() + 1);
+        else if (choice.equals("e") && Dungeon.isGoEast()) {   //move right one room
+            hero.setCurrX(Hero.getCurrX() + 1);
         }
-        else if (choice.equals("w") && Dungeon.isGoWest()) {
-            hero.setCurrX(getCurrX() - 1);
+        else if (choice.equals("w") && Dungeon.isGoWest()) {     //move left one room
+            hero.setCurrX(Hero.getCurrX() - 1);
         }
 
     }//end switch

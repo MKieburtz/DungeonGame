@@ -1,4 +1,5 @@
 public class IncreaseHitPoints implements SpecialMove {
+
     private final int MIN_ADD, MAX_ADD;
 
     public IncreaseHitPoints(int min_add, int max_add) {
@@ -8,6 +9,7 @@ public class IncreaseHitPoints implements SpecialMove {
 
     @Override
     public void preformSpecial(Hero attacker, Monster opponent) {
+
         int hPoints;
 
         hPoints = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;

@@ -1,12 +1,13 @@
 public class CrushingBlow implements SpecialMove {
-    private double crushingBlowChance;
 
+    private double crushingBlowChance;
     public CrushingBlow(double chance) {
         this.crushingBlowChance = chance;
     }
 
     @Override
     public void preformSpecial(Hero attacker, Monster opponent)
+
     {
         if (Math.random() <= crushingBlowChance)
         {
@@ -15,6 +16,7 @@ public class CrushingBlow implements SpecialMove {
                     + " damage!");
             opponent.loseHealth(blowPoints);
         }//end blow succeeded
+
         else
         {
             System.out.println(attacker.getName() + " failed to land a crushing blow");

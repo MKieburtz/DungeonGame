@@ -50,17 +50,21 @@ public class DungeonAdventure
 
 		Hero theHero;
 		Monster theMonster;
+		//Dungeon theDungeon;
 
 		do
 		{
 		    theHero = HeroFactory.chooseHero();  //Creates the hero
 		    theMonster = MonsterFactory.generateMonster();  //moved method generateMonster() to MonsterFactory class
-			//Hero.movingChoice(theHero);
-			//DungeonGame.battle(theHero, theMonster);
+			Hero.movingChoice(theHero);
+			Dungeon.battle(theHero, theMonster);
+
 
 		} while (DungeonGame.playAgain());
 
     }//end main method
+
+
 
 
 

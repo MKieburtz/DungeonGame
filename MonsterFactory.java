@@ -6,9 +6,9 @@ public class MonsterFactory extends Monster {
     }
 
 	/*-------------------------------------------------------------------
-            generateMonster randomly selects a dungeon.Monster and returns it.  It utilizes
-            a polymorphic reference (dungeon.Monster) to accomplish this task.
-            This was moved from Dungeon to dungeon.MonsterFactory to create monsters.
+            generateMonster randomly selects a Monster and returns it.  It utilizes
+            a polymorphic reference (Monster) to accomplish this task.
+            This was moved from Dungeon to MonsterFactory to create monsters.
             ---------------------------------------------------------------------*/
 
     public static Monster generateMonster()
@@ -25,7 +25,11 @@ public class MonsterFactory extends Monster {
 
             case 3: return new Skeleton();
 
-            default: System.out.println("invalid choice, returning dungeon.Skeleton");
+            case 4: return new Siren();
+
+            case 5: return new DragonWelp();
+
+            default: System.out.println("invalid choice, returning Skeleton");
                 return new Skeleton();
 
         }//end switch

@@ -1,4 +1,3 @@
-
 //********************************************************************
 //  Keyboard.java       Author: Lewis and Loftus
 //
@@ -7,8 +6,7 @@
 //********************************************************************
 
 import java.util.Scanner;
-
 public class Keyboard
 {
-static Scanner kb = new Scanner(System.in);
+   static Scanner kb = new Scanner(System.in);
 }

@@ -1,5 +1,3 @@
-
-
 /**
  * Title:
  * Description:
@@ -22,10 +20,9 @@ public class Sorceress extends Hero
 		super("Sorceress", 75, 5, .7, 25, 50, .3);
 
 		specialMove = new IncreaseHitPoints(MIN_ADD, MAX_ADD);
+
     }//end constructor
 
-
-//-----------------------------------------------------------------
 	public void normalAttack(DungeonCharacter opponent)
 	{
 		System.out.println(stats.name + " casts a spell of fireball at " +
@@ -33,6 +30,7 @@ public class Sorceress extends Hero
 		super.normalAttack(opponent);
 	}//end override of attack method
 
-//-----------------------------------------------------------------
+
+
 
 }//end class

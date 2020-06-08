@@ -5,8 +5,8 @@ public class HeroFactory extends Hero{
     }
     /*-------------------------------------------------------------------
                   chooseHero allows the user to select a hero, creates that hero, and
-                  returns it.  It utilizes a polymorphic reference (dungeon.Hero) to accomplish
-                  this task. This was moved from Dungeon to dungeon.MonsterFactory to create heros.
+                  returns it.  It utilizes a polymorphic reference (Hero) to accomplish
+                  this task. This was moved from Dungeon to MonsterFactory to create heros.
                   ---------------------------------------------------------------------*/
     public static Hero chooseHero()
     {
@@ -15,7 +15,9 @@ public class HeroFactory extends Hero{
         System.out.println("Choose a hero:\n" +
                 "1. Warrior\n" +
                 "2. Sorceress\n" +
-                "3. Thief");
+                "3. Thief\n" +
+                "4. Lancer\n" +
+                "5. Warlock");
         choice = Integer.parseInt(Keyboard.kb.nextLine()); // this is Erics
 
         switch(choice)
@@ -26,7 +28,11 @@ public class HeroFactory extends Hero{
 
             case 3: return new Thief();
 
-            default: System.out.println("invalid choice, returning dungeon.Thief");
+            case 4: return new Lancer();
+
+            case 5: return new Warlock();
+
+            default: System.out.println("invalid choice, returning Thief");
                 return new Thief();
         }//end switch
     }//end chooseHero method

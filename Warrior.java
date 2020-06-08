@@ -1,5 +1,3 @@
-
-
 /**
  * Title:
  * Description:
@@ -14,7 +12,6 @@
 
 public class Warrior extends Hero
 {
-
     public Warrior()
 	{
 
@@ -23,12 +20,16 @@ public class Warrior extends Hero
 
     }//end constructor
 
-
 	public void normalAttack(DungeonCharacter opponent)
 	{
 		System.out.println(stats.name + " swings a mighty sword at " +
 							opponent.getName() + ":");
 		super.normalAttack(opponent);
 	}//end override of attack method
+
+
+
+
+
 
 }//end Hero class

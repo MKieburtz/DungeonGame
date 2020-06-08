@@ -7,7 +7,7 @@ public class DragonWelp extends Monster
 
     }//end constructor
 
-    public void attack(DungeonCharacter opponent)
+    public void normalAttack(DungeonCharacter opponent)
     {
         System.out.println(stats.name + " uses his fireball at " +
                 opponent.getName() + ":");
