@@ -1,5 +1,7 @@
 package dungeon;
 
+import java.util.Random;
+
 /**
  * Title: dungeon.Hero.java
  *
@@ -36,6 +38,7 @@ public abstract class Hero extends DungeonCharacter
     protected int healingPotions;
     protected int visionPotions;
     protected int pillarsFound;
+    protected Room currentRoom;
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
@@ -196,19 +199,31 @@ This method is called by: external sources
 	}//end battle method
 
 	public void setCurrRoom(Room room) {
-
+		currentRoom = room;
 	}
 
 	public void aquireHealingPotion() {
 		healingPotions++;
 	}
 
+	public void consumeHealingPotion() {
+		// we can modify these numbers if we want
+		Random rand = new Random();
+		int minheal = 5;
+		int maxheal = 15;
+		stats.heal(minheal + rand.nextInt(maxheal));
+	}
+
 	public void aquireVisionPotion() {
 		visionPotions++;
+	}
+
+	public void consumeVisionPotion() {
+		currentRoom.revealSurroundingRooms();
 	}
 
 	public void aquirePillar() {
 		pillarsFound++;
 	}
-	
+
 }//end dungeon.Hero class

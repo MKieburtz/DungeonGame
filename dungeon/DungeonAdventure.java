@@ -2,7 +2,8 @@ package dungeon;
 
 public class DungeonAdventure {
     public static void main(String[] args) {
-        Dungeon dungeon = new Dungeon(HeroFactory.chooseHero());
+        Dungeon dungeon = new Dungeon(new Sorceress());
+        dungeon.testRevealSurroundingRooms();
         // do stuff
     }
 
