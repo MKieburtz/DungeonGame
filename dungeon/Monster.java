@@ -55,14 +55,10 @@ public abstract class Monster extends DungeonCharacter implements RoomContent
 		heal();
 
  }//end method
-	@Override
-	public boolean isUnique() {
-  		return false;
-	}
 
 	@Override
 	public void onHeroEnter(Hero hero) {
-  		DungeonGame.battle(hero, this);
+  		hero.battle(hero, this);
 	}
 
 }//end dungeon.Monster class

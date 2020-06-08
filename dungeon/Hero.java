@@ -210,4 +210,5 @@ This method is called by: external sources
 	public void aquirePillar() {
 		pillarsFound++;
 	}
+	
 }//end dungeon.Hero class

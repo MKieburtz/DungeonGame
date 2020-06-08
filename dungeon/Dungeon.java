@@ -1,19 +1,26 @@
 package dungeon;
 
 public class Dungeon {
+    private Hero player;
+
+    public Dungeon(Hero hero) {
+        this.player = hero;
+        generateDungeon();
+    }
+
     private static boolean goNorth = false;
     private static boolean goSouth = false;
     private static boolean goEast = false;
     private static boolean goWest = false;
 
-    public static Room[][] newDungeon() {
+    public Room[][] generateDungeon() {
         Room[][] dungeon = new Room[5][5];
         for (int i = 0; i < dungeon.length; i++) {
             for(int k = 0; k < dungeon.length; k++) {
                 //dungeon[i][k] =
             }
         }
-        Hero.setCurrRoom(dungeon[1][1]);  //This is where the hero will start
+        player.setCurrRoom(dungeon[1][1]);  //This is where the hero will start
         return dungeon;
     }
 
