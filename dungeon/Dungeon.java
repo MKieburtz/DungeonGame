@@ -86,7 +86,7 @@ public class Dungeon {
                         //TODO: add the letter for what's in the room
                         //for now just a space
                         System.out.print(" ");
-                        
+
                         if (roomExists(r.getX()+1, r.getY())) {
                             System.out.print(" |");
                         } else {
