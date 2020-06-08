@@ -33,6 +33,9 @@ public abstract class Hero extends DungeonCharacter
 	protected double chanceToBlock;  //field
 	protected int numTurns;           //field
     protected SpecialMove specialMove;
+    protected int healingPotions;
+    protected int visionPotions;
+    protected int pillarsFound;
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
@@ -42,9 +45,12 @@ public abstract class Hero extends DungeonCharacter
   {
 	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 	this.chanceToBlock = chanceToBlock;
+	healingPotions = 0;
+	visionPotions = 0;
+	pillarsFound = 0;
 	readName();
   }
-
+  
 /*-------------------------------------------------------
 readName obtains a name for the hero from the user
 
@@ -155,5 +161,53 @@ This method is called by: external sources
 		System.out.println("Healing Potions:");
 		System.out.println("Vision Potions:");
 		System.out.println("Total pillars found:");
+	}
+
+	public void battle(Hero theHero, Monster theMonster)
+	{
+		char pause = 'p';
+		System.out.println(theHero.getName() + " battles " +
+				theMonster.getName());
+		System.out.println("---------------------------------------------");
+
+		//do battle
+		while (theHero.isAlive() && theMonster.isAlive() && pause != 'q')
+		{
+			//hero goes first
+			theHero.battleChoices(theMonster);
+
+			//monster's turn (provided it's still alive!)
+			if (theMonster.isAlive())
+				theMonster.normalAttack(theHero);
+
+			//let the player bail out if desired
+			System.out.print("\n-->q to quit, anything else to continue: ");
+			pause = Keyboard.kb.next().trim().charAt(0);
+
+		}//end battle loop
+
+		if (!theMonster.isAlive())
+			System.out.println(theHero.getName() + " was victorious!");
+		else if (!theHero.isAlive())
+			System.out.println(theHero.getName() + " was defeated :-(");
+		else//both are alive so user quit the game
+			System.out.println("Quitters never win ;-)");
+
+	}//end battle method
+
+	public void setCurrRoom(Room room) {
+
+	}
+
+	public void aquireHealingPotion() {
+		healingPotions++;
+	}
+
+	public void aquireVisionPotion() {
+		visionPotions++;
+	}
+
+	public void aquirePillar() {
+		pillarsFound++;
 	}
 }//end dungeon.Hero class
