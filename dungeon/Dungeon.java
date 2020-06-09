@@ -2,11 +2,15 @@ package dungeon;
 
 public class Dungeon {
     private Hero player;
+    GameOverListener listener;
 
-    public Dungeon(Hero hero) {
+    public Dungeon(Hero hero, GameOverListener listener) {
         this.player = hero;
         generateDungeon();
     }
+
+    private final int DUNGEON_WIDTH = 5;
+    private final int DUNGEON_HEIGHT = 5;
 
     private static boolean goNorth = false;
     private static boolean goSouth = false;
@@ -15,7 +19,7 @@ public class Dungeon {
 
     private Room[][] dungeon;
     public Room[][] generateDungeon() {
-        dungeon = new Room[5][5];
+        dungeon = new Room[DUNGEON_WIDTH][DUNGEON_HEIGHT];
         for (int i = 0; i < dungeon.length; i++) {
             for(int k = 0; k < dungeon.length; k++) {
                 dungeon[i][k] = new Room(this, i, k);
@@ -38,7 +42,7 @@ public class Dungeon {
     }
 
     public void revealSurroundingRooms(Room room) {
-        // if it exists, start with the top left room, otherwise the room directly to the left, or the room directly to the right.
+        // if it exists, start with the top left room.
         int startx = room.getX() - 1;
         int starty = room.getY() - 1;
         Room[] roomsToPrint = new Room[3];
@@ -57,53 +61,78 @@ public class Dungeon {
         }
     }
 
-    // this can be a junit test
-    public void testRevealSurroundingRooms() {
-        revealSurroundingRooms(dungeon[1][1]);
-    }
-
-    private void printRowOfRooms(Room[] rooms) {
-        // print all the rooms in the row
+    private String getRowOfRooms(Room[] rooms) {
+        // get all the rooms in the row
         // py = 0 top of the room, py = 1 middle row of the room, py = 2 bottom row of the room
+        StringBuilder row = new StringBuilder();
         for (int py = 0; py < 3; py++) {
             for (Room r : rooms) {
                 switch (py) {
                     case 0:
                         // check if there's a room above, to print a door.
                         if (roomExists(r.getX(), r.getY()-1)) {
-                            System.out.print("* - * ");
+                            row.append("* - * ");
                         } else {
-                            System.out.print("* * * ");
+                            row.append("* * * ");
                         }
                         break;
                     case 1:
                         // check if there's a room to the left then right
                         if (roomExists(r.getX()-1, r.getY())) {
-                            System.out.print(" | ");
+                            row.append(" | ");
                         } else {
-                            System.out.print("* ");
+                            row.append("* ");
                         }
-                        //TODO: add the letter for what's in the room
-                        //for now just a space
-                        System.out.print(" ");
+                        // add the contents of the room
+                        if (r.hasMultipleItems()) {
+                            row.append("M");
+                        } else if (!r.getRoomContents().isEmpty()){
+                            row.append(r.getRoomContents().get(0).getIdentifier());
+                        } else {
+                            row.append(" ");
+                        }
 
                         if (roomExists(r.getX()+1, r.getY())) {
-                            System.out.print(" |");
+                            row.append(" |");
                         } else {
-                            System.out.print(" *");
+                            row.append(" *");
                         }
                         break;
                     case 2:
                         // similarly check if there's a room below to print a door
                         if (roomExists(r.getX(), r.getY()+1)) {
-                            System.out.print("* - * ");
+                            row.append("* - * ");
                         } else {
-                            System.out.print("* * * ");
+                            row.append("* * * ");
                         }
                         break;
                 }
             }
-            System.out.println("");
+            row.append("\n");
         }
+        return row.toString();
+    }
+
+    private void printRowOfRooms(Room[] rooms) {
+        System.out.println(getRowOfRooms(rooms));
+    }
+
+    public void printRoom(Room room) {
+        Room[] r = {room};
+        printRowOfRooms(r);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder dungeonString = new StringBuilder();
+        for (int y = 0; y < DUNGEON_HEIGHT; y++) {
+            Room[] row = new Room[DUNGEON_WIDTH];
+            for (int x = 0; x < DUNGEON_WIDTH; x++) {
+                if (roomExists(x, y)) // all these rooms should exist
+                    row[x] = dungeon[x][y];
+            }
+            dungeonString.append(getRowOfRooms(row)).append("\n");
+        }
+        return dungeonString.toString();
     }
 }

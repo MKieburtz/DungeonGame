@@ -61,4 +61,7 @@ public abstract class Monster extends DungeonCharacter implements RoomContent
   		hero.battle(hero, this);
 	}
 
+	public char getIdentifier() {
+  		return 'X';
+	}
 }//end dungeon.Monster class

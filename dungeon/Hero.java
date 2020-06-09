@@ -39,6 +39,7 @@ public abstract class Hero extends DungeonCharacter
     protected int visionPotions;
     protected int pillarsFound;
     protected Room currentRoom;
+    private GameOverListener listener;
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
@@ -52,6 +53,10 @@ public abstract class Hero extends DungeonCharacter
 	visionPotions = 0;
 	pillarsFound = 0;
 	readName();
+  }
+
+  public void setGameOverListener(GameOverListener listener) {
+  	this.listener = listener;
   }
   
 /*-------------------------------------------------------
@@ -191,8 +196,13 @@ This method is called by: external sources
 
 		if (!theMonster.isAlive())
 			System.out.println(theHero.getName() + " was victorious!");
-		else if (!theHero.isAlive())
+		else if (!theHero.isAlive()) {
 			System.out.println(theHero.getName() + " was defeated :-(");
+			if (listener != null)
+				listener.onGameOver(false);
+			else
+				System.out.println("ERROR the gameOverListener is null!");
+		}
 		else//both are alive so user quit the game
 			System.out.println("Quitters never win ;-)");
 
@@ -215,11 +225,16 @@ This method is called by: external sources
 	}
 
 	public void aquireVisionPotion() {
+		System.out.println("you got a vision potion!");
 		visionPotions++;
 	}
 
 	public void consumeVisionPotion() {
 		currentRoom.revealSurroundingRooms();
+	}
+
+	public int getPillarsFound() {
+		return pillarsFound;
 	}
 
 	public void aquirePillar() {

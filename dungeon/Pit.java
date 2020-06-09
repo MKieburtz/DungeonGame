@@ -17,4 +17,9 @@ public class Pit implements RoomContent {
         System.out.println(hero.getName() + " fell into a pit!");
         hero.loseHealth(damage, false);
     }
+
+    @Override
+    public char getIdentifier() {
+        return 'P';
+    }
 }
