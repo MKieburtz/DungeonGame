@@ -30,42 +30,12 @@
  * version 1.0
  */
 
-
-
-/*
-  This class is the driver file for the Heroes and Monsters project.  It will
-  do the following:
-
-  1.  Allow the user to choose a hero
-  2.  Randomly select a monster
-  3.  Allow the hero to battle the monster
-
-  Once a battle concludes, the user has the option of repeating the above
-
-*/
 public class DungeonAdventure
 {
     public static void main(String[] args)
 	{
-
-		Hero theHero;
-		Monster theMonster;
-		//Dungeon theDungeon;
-
-		do
-		{
-		    theHero = HeroFactory.chooseHero();  //Creates the hero
-		    theMonster = MonsterFactory.generateMonster();  //moved method generateMonster() to MonsterFactory class
-			Hero.movingChoice(theHero);
-			Dungeon.battle(theHero, theMonster);
-
-
-		} while (DungeonGame.playAgain());
-
+		Menu.mainMenu();
     }//end main method
-
-
-
 
 
 	}//end Dungeon class
