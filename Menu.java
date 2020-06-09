@@ -1,30 +1,4 @@
 public class Menu {
-    public static void mainMenu() {
-        boolean gameSet = false;
-        do {
-            menuChoices();
-            String choice = Keyboard.kb.nextLine();
-            switch (choice) {
-                case "1":
-                    startGame();
-                    gameSet = true;
-                    break;
-                case "2":
-                    aboutHeros();
-                    gameSet = true;
-                    break;
-                case "3":
-                    howToPlay();
-                    gameSet = true;
-                    break;
-                case "4":
-                    System.exit(0);
-            }
-
-        } while (!gameSet);
-
-    }
-
 
     public static void menuChoices() {
         System.out.println("-----------------------------------------------\n" +
@@ -37,7 +11,7 @@ public class Menu {
                 "3. How To Play \n" +
                 "4. Quit Game");
     }
-
+/*
     public static void startGame() {
         Hero theHero;
         Monster theMonster;
@@ -54,6 +28,8 @@ public class Menu {
 
     }
 
+
+ */
     public static void aboutHeros() {
         System.out.println("Here are the Heros you can choose from\n" +
                 "------------------------------------------------------\n" +
@@ -95,7 +71,7 @@ public class Menu {
                 "*                          ***  Chance to Block: .5  *\n" +
                 "------------------------------------------------------\n"
         );
-        mainMenu();
+        DungeonAdventure.mainMenu();
     }
 
     public static void howToPlay() {
@@ -115,7 +91,7 @@ public class Menu {
                 "*Find these Potions in rooms to help you along the way.    *\n" +
                 "*        Good luck on your travels Adventure               *\n" +
                 "------------------------------------------------------------");
-        mainMenu();
+        DungeonAdventure.mainMenu();
 
     }
 

@@ -30,12 +30,65 @@
  * version 1.0
  */
 
-public class DungeonAdventure
-{
-    public static void main(String[] args)
+public class DungeonAdventure implements GameOverListener {
+	private Dungeon dungeon;
+	private boolean gameOver;
+	public DungeonAdventure() {
+		Dungeon dungeon = new Dungeon(HeroFactory.chooseHero(this), this);
+		gameOver = false;
+	}
+
+	public static void main(String[] args) {
+		mainMenu();
+	}
+
+	@Override
+	public void onGameOver(boolean won) {
+
+		gameOver = true;
+		if (won) {
+			System.out.println("Congrats you beat the game! You found all 4 pillars of OO!");
+		} else {
+			System.out.println("Oh no! You died!");
+		}
+		System.out.println(dungeon.toString());
+		if(playAgain()) {
+			new DungeonAdventure();
+		}
+	}
+
+	public boolean playAgain()
 	{
-		Menu.mainMenu();
-    }//end main method
+		char again;
+		System.out.println("Play again (y/n)?");
+		again = Keyboard.kb.next().trim().charAt(0);
 
+		return (again == 'Y' || again == 'y');
+	}//end playAgain method
 
-	}//end Dungeon class
+	public static void mainMenu() {
+		boolean gameSet = false;
+		do {
+			Menu.menuChoices();
+			String choice = Keyboard.kb.nextLine();
+			switch (choice) {
+				case "1":
+					new DungeonAdventure();
+					gameSet = true;
+					break;
+				case "2":
+					Menu.aboutHeros();
+					gameSet = true;
+					break;
+				case "3":
+					Menu.howToPlay();
+					gameSet = true;
+					break;
+				case "4":
+					System.exit(0);
+			}
+
+		} while (!gameSet);
+
+	}
+}
