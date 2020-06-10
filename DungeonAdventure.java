@@ -33,13 +33,15 @@
 public class DungeonAdventure implements GameOverListener {
 	private Dungeon dungeon;
 	private boolean gameOver;
+
 	public DungeonAdventure() {
+		howToPlay();
 		Dungeon dungeon = new Dungeon(HeroFactory.chooseHero(this), this);
 		gameOver = false;
 	}
 
 	public static void main(String[] args) {
-		mainMenu();
+		new DungeonAdventure();
 	}
 
 	@Override
@@ -52,13 +54,12 @@ public class DungeonAdventure implements GameOverListener {
 			System.out.println("Oh no! You died!");
 		}
 		System.out.println(dungeon.toString());
-		if(playAgain()) {
+		if (playAgain()) {
 			new DungeonAdventure();
 		}
 	}
 
-	public boolean playAgain()
-	{
+	public boolean playAgain() {
 		char again;
 		System.out.println("Play again (y/n)?");
 		again = Keyboard.kb.next().trim().charAt(0);
@@ -66,29 +67,27 @@ public class DungeonAdventure implements GameOverListener {
 		return (again == 'Y' || again == 'y');
 	}//end playAgain method
 
-	public static void mainMenu() {
-		boolean gameSet = false;
-		do {
-			Menu.menuChoices();
-			String choice = Keyboard.kb.nextLine();
-			switch (choice) {
-				case "1":
-					new DungeonAdventure();
-					gameSet = true;
-					break;
-				case "2":
-					Menu.aboutHeros();
-					gameSet = true;
-					break;
-				case "3":
-					Menu.howToPlay();
-					gameSet = true;
-					break;
-				case "4":
-					System.exit(0);
-			}
-
-		} while (!gameSet);
+	public void howToPlay() {
+		System.out.println("------------------------------------------------------------\n" +
+						"*          ****WELCOME TO DUNGEON ADVENTURE****           *\n" +
+				"------------------------------------------------------------\n" +
+				"*                  HOW TO PLAY                            *\n" +
+				"------------------------------------------------------------\n" +
+				"*The goal of the game to collect the four pillars of Object*\n" +
+				"*Oriented(OO) and exit the dungeon. You first get to choose*\n" +
+				"*from the 5 special heros and create a name for yourself.  *\n" +
+				"*Be careful though once you step in, you must get past the *\n" +
+				"*traps and monsters.                                       *\n" +
+				"*Not to worry there are 2 types of potions to help you     *\n" +
+				"*along the way:                                            *\n" +
+				"*1. Health Potion: To regain your health                   *\n" +
+				"*2. Vision Potion: Helps see whats in the next rooms that  *\n" +
+				"*   are around you.                                        *\n" +
+				"*Find these Potions in rooms to help you along the way.    *\n" +
+				"*        Good luck on your travels Adventure               *\n" +
+				"------------------------------------------------------------");
 
 	}
+	
 }
+
