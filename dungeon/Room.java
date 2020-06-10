@@ -1,7 +1,6 @@
 package dungeon;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 public class Room {
@@ -64,6 +63,7 @@ public class Room {
         }
     }
 
+
     public boolean hasMultipleItems() {
         return roomContents.size() > 1;
     }
@@ -94,4 +94,7 @@ public class Room {
     public void printRoom() {
         dungeon.printRoom(this);
     }
+
 }
+
+
