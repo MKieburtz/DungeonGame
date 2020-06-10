@@ -13,7 +13,7 @@ public class Warlock extends Hero
 
     public void normalAttack(DungeonCharacter opponent)        //created a spell instead of a melee attack used form sorceress
     {
-        System.out.println(stats.name + " summons a bolt of lightening at " +
+        System.out.println(stats.name + " summons a bolt of lightning at " +
                 opponent.getName() + ":");
         super.normalAttack(opponent);
     }//end override of attack method

@@ -16,7 +16,7 @@ public class Thief extends Hero
 	{
 		super("Thief", 75, 6, .8, 20, 40, .5);
 
-		specialMove = new SupriseAttack(.4, .9);
-
+		specialMove = new SupriseAttack(.4,.9);
     }//end constructor
+
 }

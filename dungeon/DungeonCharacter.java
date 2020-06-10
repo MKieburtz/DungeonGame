@@ -35,7 +35,6 @@ package dungeon;
 
 public abstract class DungeonCharacter implements Comparable
 {
-
 	protected DungeonCharacterStats stats;
 
 	public int compareTo(Object o)
@@ -51,6 +50,7 @@ public abstract class DungeonCharacter implements Comparable
 	{
 
 		stats = new DungeonCharacterStats(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
+
 	}//end constructor
 
 //-----------------------------------------------------------------
@@ -169,17 +169,17 @@ hero classes and externally
 						+ stats.damageMin ;
 			opponent.loseHealth(damage);
 
-
-        }//end if can attack
+			System.out.println();
+		}//end if can attack
 		else
 		{
 
 			System.out.println(getName() + "'s attack on " + opponent.getName() +
 								" failed!");
-        }//end else
-        System.out.println();
+			System.out.println();
+		}//end else
 
-    }//end attack method
+	}//end attack method
 
 //-----------------------------------------------------------------
 

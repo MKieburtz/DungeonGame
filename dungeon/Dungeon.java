@@ -13,10 +13,6 @@ public class Dungeon {
     private final int DUNGEON_WIDTH = 5;
     private final int DUNGEON_HEIGHT = 5;
 
-    private static boolean goNorth = false;
-    private static boolean goSouth = false;
-    private static boolean goEast = false;
-    private static boolean goWest = false;
 
     private Room[][] dungeon;
     public void generateDungeon() {
