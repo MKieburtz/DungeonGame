@@ -32,7 +32,7 @@ import java.util.Random;
 
 public abstract class Hero extends DungeonCharacter
 {
-	protected double chanceToBlock;  //field
+    protected double chanceToBlock;  //field
 	protected int numTurns;           //field
     protected SpecialMove specialMove;
     protected int healingPotions;
@@ -41,25 +41,25 @@ public abstract class Hero extends DungeonCharacter
     protected Room currentRoom;
     private GameOverListener listener;
 
+
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
   public Hero(String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax,
-					 double chanceToBlock)
-  {
-	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
-	this.chanceToBlock = chanceToBlock;
-	healingPotions = 0;
-	visionPotions = 0;
-	pillarsFound = 0;
-	readName();
+					 double chanceToBlock) {
+	  super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
+	  this.chanceToBlock = chanceToBlock;
+	  healingPotions = 0;
+	  visionPotions = 0;
+	  pillarsFound = 0;
+	  readName();
   }
 
   public void setGameOverListener(GameOverListener listener) {
   	this.listener = listener;
   }
-  
-/*-------------------------------------------------------
+
+  /*-------------------------------------------------------
 readName obtains a name for the hero from the user
 
 Receives: nothing
@@ -166,6 +166,7 @@ This method is called by: external sources
     public void info() {
 		System.out.println("Name: " + stats.name);
 		System.out.println("Health: " + stats.hitPoints);
+	  	System.out.println("In Room ["  + currentRoom.getX() + "]["+ currentRoom.getY() + "]");
 		System.out.println("Healing Potions: " + healingPotions);
 		System.out.println("Vision Potions: " + visionPotions);
 		System.out.println("Total pillars found: " + pillarsFound);
@@ -258,4 +259,4 @@ This method is called by: external sources
 		}
 	}
 
-}//end dungeon.Hero class
+}//end Hero class

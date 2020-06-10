@@ -28,4 +28,4 @@ public class Ogre extends Monster
 	}//end override of attack
 
 
-}//end dungeon.Monster class
+}//end Ogre class

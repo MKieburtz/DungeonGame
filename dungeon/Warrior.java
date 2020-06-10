@@ -9,12 +9,8 @@ package dungeon;
  * @version 1.0
  */
 
-
-
-
 public class Warrior extends Hero
 {
-
     public Warrior()
 	{
 
@@ -22,7 +18,6 @@ public class Warrior extends Hero
 		specialMove = new CrushingBlow(.4);
 
     }//end constructor
-
 
 	public void normalAttack(DungeonCharacter opponent)
 	{

@@ -15,5 +15,3 @@ public class Lancer extends Hero {
         super.normalAttack(opponent);
     }//end override of attack method
 }
-
-

@@ -41,5 +41,3 @@ public class HeroFactory extends Hero{
         return hero;
     }//end chooseHero method
 }//end dungeon.HeroFactory class
-
-

@@ -36,5 +36,4 @@ public class MonsterFactory extends Monster {
 
         }//end switch
     }//end generateMonster method
-}//end of dungeon.MonsterFactory class
-
+}//end of MonsterFactory class
