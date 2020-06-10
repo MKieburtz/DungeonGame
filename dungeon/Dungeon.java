@@ -5,6 +5,7 @@ public class Dungeon {
     GameOverListener listener;
 
     public Dungeon(Hero hero, GameOverListener listener) {
+        this.listener = listener;
         this.player = hero;
         generateDungeon();
     }
@@ -18,16 +19,18 @@ public class Dungeon {
     private static boolean goWest = false;
 
     private Room[][] dungeon;
-    public Room[][] generateDungeon() {
+    public void generateDungeon() {
         dungeon = new Room[DUNGEON_WIDTH][DUNGEON_HEIGHT];
         for (int i = 0; i < dungeon.length; i++) {
             for(int k = 0; k < dungeon.length; k++) {
                 dungeon[i][k] = new Room(this, i, k);
             }
         }
-        player.setCurrRoom(dungeon[1][1]);  //This is where the hero will start
-        return dungeon;
+
+        Room.fillRooms(dungeon,listener);
     }
+
+
 
     public boolean roomExists(int x, int y) {
         return (rowExists(x)) && (colExists(y));
@@ -39,6 +42,13 @@ public class Dungeon {
 
     public boolean colExists(int y) {
         return (y >= 0) && (y <= 4);
+    }
+
+    public Room getRoom(int x, int y) {
+        if (roomExists(x, y)) {
+            return dungeon[x][y];
+        }
+        return null;
     }
 
     public void revealSurroundingRooms(Room room) {
@@ -56,12 +66,12 @@ public class Dungeon {
                     n++;
                 }
             }
-            printRowOfRooms(roomsToPrint);
+            printRowOfRooms(roomsToPrint, true);
             n = 0;
         }
     }
 
-    private String getRowOfRooms(Room[] rooms) {
+    private String getRowOfRooms(Room[] rooms, boolean visionPotion) {
         // get all the rooms in the row
         // py = 0 top of the room, py = 1 middle row of the room, py = 2 bottom row of the room
         StringBuilder row = new StringBuilder();
@@ -79,23 +89,25 @@ public class Dungeon {
                     case 1:
                         // check if there's a room to the left then right
                         if (roomExists(r.getX()-1, r.getY())) {
-                            row.append(" | ");
+                            row.append("| ");
                         } else {
                             row.append("* ");
                         }
                         // add the contents of the room
                         if (r.hasMultipleItems()) {
-                            row.append("M");
+                            row.append("M ");
                         } else if (!r.getRoomContents().isEmpty()){
-                            row.append(r.getRoomContents().get(0).getIdentifier());
+                            row.append(r.getRoomContents().get(0).getIdentifier() + " ");
+                        } else if (visionPotion && (player.getCurrentRoom().getX() == r.getX() && player.getCurrentRoom().getY() == r.getY())) {
+                            row.append("# ");
                         } else {
-                            row.append(" ");
+                            row.append("  ");
                         }
 
                         if (roomExists(r.getX()+1, r.getY())) {
-                            row.append(" |");
+                            row.append("| ");
                         } else {
-                            row.append(" *");
+                            row.append("* ");
                         }
                         break;
                     case 2:
@@ -113,13 +125,20 @@ public class Dungeon {
         return row.toString();
     }
 
-    private void printRowOfRooms(Room[] rooms) {
-        System.out.println(getRowOfRooms(rooms));
+    private void printRowOfRooms(Room[] rooms, boolean visionPotion) {
+        System.out.println(getRowOfRooms(rooms, visionPotion));
     }
 
     public void printRoom(Room room) {
         Room[] r = {room};
-        printRowOfRooms(r);
+        printRowOfRooms(r, false);
+    }
+
+    public Room getAdjacentRoom(Room room, int dx, int dy) {
+        if (!roomExists(room.getX()+dx, room.getY()+dy)) {
+            System.out.println("error bad room passed into getAdjacentRoom, this shouldn't happen because we check beforehand");
+        }
+        return dungeon[room.getX()+dx][room.getY()+dy];
     }
 
     @Override
@@ -131,7 +150,7 @@ public class Dungeon {
                 if (roomExists(x, y)) // all these rooms should exist
                     row[x] = dungeon[x][y];
             }
-            dungeonString.append(getRowOfRooms(row)).append("\n");
+            dungeonString.append(getRowOfRooms(row, false));
         }
         return dungeonString.toString();
     }

@@ -116,14 +116,14 @@ This method is called by: overridden versions in dungeon.Hero and dungeon.Monste
 		} //end else if
 
 		if (stats.hitPoints == 0)
-			System.out.println(stats.name + " has been killed :-(");
+			System.out.println(stats.name + " has been killed.");
 
 
 	}//end method
 
 	private void reportHealthLoss(int damage) {
 		System.out.println(getName() + " hit " +
-				" for <" + damage + "> points damage.");
+				"for <" + damage + "> points damage.");
 		System.out.println(getName() + " now has " +
 				getHitPoints() + " hit points remaining.");
 	}

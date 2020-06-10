@@ -166,9 +166,9 @@ This method is called by: external sources
     public void info() {
 		System.out.println("Name: " + stats.name);
 		System.out.println("Health: " + stats.hitPoints);
-		System.out.println("Healing Potions:");
-		System.out.println("Vision Potions:");
-		System.out.println("Total pillars found:");
+		System.out.println("Healing Potions: " + healingPotions);
+		System.out.println("Vision Potions: " + visionPotions);
+		System.out.println("Total pillars found: " + pillarsFound);
 	}
 
 	public void battle(Hero theHero, Monster theMonster)
@@ -210,9 +210,15 @@ This method is called by: external sources
 
 	public void setCurrRoom(Room room) {
 		currentRoom = room;
+		currentRoom.onHeroEnter(this);
+	}
+
+	public Room getCurrentRoom() {
+		return currentRoom;
 	}
 
 	public void aquireHealingPotion() {
+		System.out.println("You got a healing potion!");
 		healingPotions++;
 	}
 
@@ -221,7 +227,11 @@ This method is called by: external sources
 		Random rand = new Random();
 		int minheal = 5;
 		int maxheal = 15;
-		stats.heal(minheal + rand.nextInt(maxheal));
+		int healAmount = minheal + rand.nextInt(maxheal);
+		System.out.println("You drink a healing potion *minecraft potion noise*");
+		System.out.println("You're healed for " + healAmount);
+		stats.heal(healAmount);
+		System.out.println("You're health is now: " + stats.hitPoints + "\n");
 	}
 
 	public void aquireVisionPotion() {
@@ -230,6 +240,7 @@ This method is called by: external sources
 	}
 
 	public void consumeVisionPotion() {
+		System.out.println("You drink a vision potion *minecraft potion noise*");
 		currentRoom.revealSurroundingRooms();
 	}
 
@@ -238,7 +249,13 @@ This method is called by: external sources
 	}
 
 	public void aquirePillar() {
+		System.out.println("You found a pillar of OO!!");
 		pillarsFound++;
+		if (pillarsFound == 4) {
+			System.out.println("You've found all the pillars! Head for the exit!");
+		} else {
+			System.out.println("You only have " + (4-pillarsFound) + " left to find!\n");
+		}
 	}
 
 }//end dungeon.Hero class
