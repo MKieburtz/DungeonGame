@@ -74,9 +74,10 @@ public class Room {
         for (RoomContent content : roomContents) {
             content.onHeroEnter(hero);
         }
-        // if there were any healing or vision potions in the room, remove them
+        // if there were any healing, vision potions, or pillars in the room, remove them
         roomContents.removeIf(content -> content instanceof HealingPotion);
         roomContents.removeIf(content -> content instanceof VisionPotion);
+        roomContents.removeIf(content -> content instanceof PillarOfOO);
     }
 
     public int getX() {
