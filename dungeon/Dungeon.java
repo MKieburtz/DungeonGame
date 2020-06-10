@@ -26,8 +26,13 @@ public class Dungeon {
             }
         }
         player.setCurrRoom(dungeon[1][1]);  //This is where the hero will start
+
+        Room.fillRooms(dungeon,listener);
+
         return dungeon;
     }
+
+
 
     public boolean roomExists(int x, int y) {
         return (rowExists(x)) && (colExists(y));
@@ -135,4 +140,7 @@ public class Dungeon {
         }
         return dungeonString.toString();
     }
-}
+
+
+
+    }
