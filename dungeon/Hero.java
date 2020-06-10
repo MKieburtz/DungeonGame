@@ -235,6 +235,8 @@ This method is called by: external sources
 			stats.heal(healAmount);
 			System.out.println("You're health is now: " + stats.hitPoints + "\n");
 			healingPotions--;
+		} else {
+			System.out.println("You don't have any healing potions!");
 		}
 	}
 
@@ -248,6 +250,8 @@ This method is called by: external sources
 			System.out.println("You drink a vision potion *minecraft potion noise*");
 			currentRoom.revealSurroundingRooms();
 			visionPotions--;
+		} else {
+			System.out.println("You don't have any vision potions!");
 		}
 	}
 
