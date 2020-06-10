@@ -233,6 +233,7 @@ This method is called by: external sources
 		System.out.println("You're healed for " + healAmount);
 		stats.heal(healAmount);
 		System.out.println("You're health is now: " + stats.hitPoints + "\n");
+		healingPotions--;
 	}
 
 	public void aquireVisionPotion() {
@@ -243,6 +244,7 @@ This method is called by: external sources
 	public void consumeVisionPotion() {
 		System.out.println("You drink a vision potion *minecraft potion noise*");
 		currentRoom.revealSurroundingRooms();
+		visionPotions--;
 	}
 
 	public int getPillarsFound() {
