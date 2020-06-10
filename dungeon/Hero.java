@@ -225,15 +225,17 @@ This method is called by: external sources
 
 	public void consumeHealingPotion() {
 		// we can modify these numbers if we want
-		Random rand = new Random();
-		int minheal = 5;
-		int maxheal = 15;
-		int healAmount = minheal + rand.nextInt(maxheal);
-		System.out.println("You drink a healing potion *minecraft potion noise*");
-		System.out.println("You're healed for " + healAmount);
-		stats.heal(healAmount);
-		System.out.println("You're health is now: " + stats.hitPoints + "\n");
-		healingPotions--;
+		if (healingPotions > 0) {
+			Random rand = new Random();
+			int minheal = 5;
+			int maxheal = 15;
+			int healAmount = minheal + rand.nextInt(maxheal);
+			System.out.println("You drink a healing potion *minecraft potion noise*");
+			System.out.println("You're healed for " + healAmount);
+			stats.heal(healAmount);
+			System.out.println("You're health is now: " + stats.hitPoints + "\n");
+			healingPotions--;
+		}
 	}
 
 	public void aquireVisionPotion() {
@@ -242,9 +244,11 @@ This method is called by: external sources
 	}
 
 	public void consumeVisionPotion() {
-		System.out.println("You drink a vision potion *minecraft potion noise*");
-		currentRoom.revealSurroundingRooms();
-		visionPotions--;
+		if (visionPotions>0) {
+			System.out.println("You drink a vision potion *minecraft potion noise*");
+			currentRoom.revealSurroundingRooms();
+			visionPotions--;
+		}
 	}
 
 	public int getPillarsFound() {
