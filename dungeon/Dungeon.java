@@ -33,11 +33,11 @@ public class Dungeon {
     }
 
     public boolean rowExists(int x) {
-        return (x >= 0) && (x <= 4);
+        return (x >= 0) && (x <= DUNGEON_WIDTH - 1);
     }
 
     public boolean colExists(int y) {
-        return (y >= 0) && (y <= 4);
+        return (y >= 0) && (y <= DUNGEON_HEIGHT - 1);
     }
 
     public Room getRoom(int x, int y) {

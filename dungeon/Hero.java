@@ -41,6 +41,8 @@ public abstract class Hero extends DungeonCharacter
     protected Room currentRoom;
     private GameOverListener listener;
 
+    private final int HEALING_POTION_DROP_CHANCE = 30;
+
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
@@ -195,8 +197,13 @@ This method is called by: external sources
 
 		}//end battle loop
 
-		if (!theMonster.isAlive())
+		if (!theMonster.isAlive()) {
 			System.out.println(theHero.getName() + " was victorious!");
+			Random random = new Random();
+			if (random.nextInt(100) < HEALING_POTION_DROP_CHANCE) {
+				aquireHealingPotion();
+			}
+		}
 		else if (!theHero.isAlive()) {
 			System.out.println(theHero.getName() + " was defeated :-(");
 			if (listener != null)
