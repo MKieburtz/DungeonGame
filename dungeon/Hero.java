@@ -255,6 +255,7 @@ This method is called by: external sources
 	public void consumeVisionPotion() {
 		if (visionPotions>0) {
 			System.out.println("You drink a vision potion *minecraft potion noise*");
+			System.out.println("You are here: #");
 			currentRoom.revealSurroundingRooms();
 			visionPotions--;
 		} else {

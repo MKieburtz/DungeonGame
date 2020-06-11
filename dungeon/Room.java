@@ -12,7 +12,7 @@ public class Room {
     private final int HEALING_POT_CHANCE = 40;
     private final int PIT_CHANCE = 20;
     private final int MONSTER_CHANCE = 30;
-    private final int VISION_POT_CHANCE = 20;
+    private final int VISION_POT_CHANCE = 100;
 
     public Room(Dungeon dungeon, int x, int y) {
         this.dungeon = dungeon;
@@ -78,6 +78,7 @@ public class Room {
         roomContents.removeIf(content -> content instanceof HealingPotion);
         roomContents.removeIf(content -> content instanceof VisionPotion);
         roomContents.removeIf(content -> content instanceof PillarOfOO);
+        roomContents.removeIf(content -> content instanceof Monster);
     }
 
     public int getX() {

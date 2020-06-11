@@ -1,5 +1,10 @@
 package dungeon;
 
+import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Dungeon {
     private Hero player;
     GameOverListener listener;
@@ -51,23 +56,22 @@ public class Dungeon {
         // if it exists, start with the top left room.
         int startx = room.getX() - 1;
         int starty = room.getY() - 1;
-        Room[] roomsToPrint = new Room[3];
-        int n = 0;
+        ArrayList<Room> roomsToPrint = new ArrayList<>();
         for (int y = starty; y < starty + 3; y++) {
             for (int x = startx; x < startx + 3; x++) {
                 if (roomExists(x, y)) {
                     // add it to the array of rooms to print
                     //System.out.println("revealing room: " + x + " " + y + " in slot: " + n);
-                    roomsToPrint[n] = dungeon[x][y];
-                    n++;
+                    roomsToPrint.add(dungeon[x][y]);
                 }
             }
-            printRowOfRooms(roomsToPrint, true);
-            n = 0;
+            if (!roomsToPrint.isEmpty())
+                printRowOfRooms(roomsToPrint, true);
+            roomsToPrint.clear();
         }
     }
 
-    private String getRowOfRooms(Room[] rooms, boolean visionPotion) {
+    private String getRowOfRooms(ArrayList<Room> rooms, boolean visionPotion) {
         // get all the rooms in the row
         // py = 0 top of the room, py = 1 middle row of the room, py = 2 bottom row of the room
         StringBuilder row = new StringBuilder();
@@ -90,12 +94,12 @@ public class Dungeon {
                             row.append("* ");
                         }
                         // add the contents of the room
-                        if (r.hasMultipleItems()) {
+                        if (visionPotion && (player.getCurrentRoom().getX() == r.getX() && player.getCurrentRoom().getY() == r.getY())) {
+                            row.append("# ");
+                        } else if (r.hasMultipleItems()) {
                             row.append("M ");
                         } else if (!r.getRoomContents().isEmpty()){
                             row.append(r.getRoomContents().get(0).getIdentifier() + " ");
-                        } else if (visionPotion && (player.getCurrentRoom().getX() == r.getX() && player.getCurrentRoom().getY() == r.getY())) {
-                            row.append("# ");
                         } else {
                             row.append("  ");
                         }
@@ -121,12 +125,13 @@ public class Dungeon {
         return row.toString();
     }
 
-    private void printRowOfRooms(Room[] rooms, boolean visionPotion) {
-        System.out.println(getRowOfRooms(rooms, visionPotion));
+    private void printRowOfRooms(ArrayList<Room> rooms, boolean visionPotion) {
+        System.out.print(getRowOfRooms(rooms, visionPotion));
     }
 
     public void printRoom(Room room) {
-        Room[] r = {room};
+        ArrayList<Room> r = new ArrayList<>();
+        r.add(room);
         printRowOfRooms(r, false);
     }
 
@@ -141,16 +146,13 @@ public class Dungeon {
     public String toString() {
         StringBuilder dungeonString = new StringBuilder();
         for (int y = 0; y < DUNGEON_HEIGHT; y++) {
-            Room[] row = new Room[DUNGEON_WIDTH];
+            ArrayList<Room> row = new ArrayList<Room>();
             for (int x = 0; x < DUNGEON_WIDTH; x++) {
                 if (roomExists(x, y)) // all these rooms should exist
-                    row[x] = dungeon[x][y];
+                    row.add(dungeon[x][y]);
             }
             dungeonString.append(getRowOfRooms(row, false));
         }
         return dungeonString.toString();
     }
-
-
-
-    }
+}
